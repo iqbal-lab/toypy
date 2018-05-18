@@ -10,6 +10,10 @@ sns.set_style('ticks')
 import allel;
 print('scikit-allel', allel.__version__)
 
+# Playing with basic Python and scikit-allel
+# Ideas from http://alimanfoo.github.io/2017/06/14/read-vcf.html
+
+
 #made up VCF based on a real plasmodium VCF. Samples are called
 # GB4 and mickeymouse
 callset = allel.read_vcf('test.vcf')
