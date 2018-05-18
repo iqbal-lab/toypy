@@ -8,7 +8,8 @@ import seaborn as sns
 sns.set_style('white')
 sns.set_style('ticks')
 import allel;
-print('scikit-allel', allel.__version__)
+import pprint
+
 
 # Playing with basic Python and scikit-allel
 # Ideas from http://alimanfoo.github.io/2017/06/14/read-vcf.html
@@ -46,7 +47,7 @@ print(sorted(varinfo.keys()))
 callinfo = allel.read_vcf('test.vcf', fields='calldata/GT_CONF')
 
 #just check we can count the high confidence calls
-gt_high = np.all(callinfo['calldata/GT_CONF']>200)
+gt_high = np.all(callinfo['calldata/GT_CONF']>200, axis=1)
 #no we cannot - why does this not work?
 print(np.sum(gt_high))
 
