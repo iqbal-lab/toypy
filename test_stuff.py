@@ -39,7 +39,15 @@ print(genotypes_equal)
 varinfo = allel.read_vcf('test.vcf', fields='variants/*')
 print(sorted(varinfo.keys()))
 
-callinfo = allel.read_vcf('test.vcf', fields='calldata/*')
-print(sorted(callinfo.keys()))
+callinfo = allel.read_vcf('test.vcf', fields='calldata/GT_CONF')
+
+#just check we can count the high confidence calls
+gt_high = np.all(callinfo['calldata/GT_CONF']>200)
+#no we cannot - why does this not work?
+print(np.sum(gt_high))
+
 
 #what is the distribution of genotype confidences?
+
+plt.hist(callinfo["calldata/GT_CONF"],bins=[0,100,200,300,400,500])
+plt.show()
